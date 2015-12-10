@@ -9,7 +9,17 @@ angular.module("MailboxApp", ['ui.router'])
             controller: function ($scope, messageStore) {
                 $scope.messages = messageStore.getMessages();
             }
-        });
+        })
+        .state('message', {
+            url: "/message/:id",
+            templateUrl: "partials/message.html",
+            controller: function($scope, messageStore, $stateParams) {
+                $scope.message = messageStore.getMessages()
+                .filter(function(message) {
+                    return message.id == $stateParams.id;
+                })[0];
+            }
+        })
     })
     .service("messageStore", function () {
         var messages = [];
