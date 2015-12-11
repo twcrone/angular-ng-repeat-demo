@@ -23,7 +23,7 @@ angular.module("MailboxApp", ['ui.router'])
     })
     .service("messageStore", function () {
         var messages = [];
-        var size = 100;
+        var size = 1000;
 
         for (var i = 0; i < size; ++i) {
             messages.push({
